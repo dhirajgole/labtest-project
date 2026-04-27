@@ -1,0 +1,119 @@
+/* Page background support */
+body {
+  background-color: #f4f7fb;
+}
+
+/* Main container */
+.test-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.test-header {
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e6eaf0;
+}
+
+.test-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2d3d;
+  margin-bottom: 6px;
+}
+
+.test-header p {
+  font-size: 15px;
+  color: #6b7c93;
+}
+
+/* Sections */
+.test-section {
+  margin-top: 26px;
+}
+
+.test-section h2 {
+  font-size: 18px;
+  color: #1e88e5;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.test-section h2::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 4px;
+  height: 14px;
+  width: 4px;
+  background-color: #1e88e5;
+  border-radius: 4px;
+}
+
+.test-section p,
+.test-section ul {
+  font-size: 15px;
+  color: #4f5d73;
+  line-height: 1.7;
+}
+
+.test-section ul {
+  padding-left: 20px;
+}
+
+.test-section li {
+  margin-bottom: 6px;
+}
+
+/* Highlight / Warning box */
+.warning {
+  background: #fff8e1;
+  border-left: 4px solid #ffb300;
+  padding: 15px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* CTA section */
+.test-cta {
+  margin-top: 35px;
+  text-align: center;
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(135deg, #1e88e5, #1565c0);
+  color: #ffffff;
+  padding: 12px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(30, 136, 229, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(30, 136, 229, 0.35);
+  background: linear-gradient(135deg, #1565c0, #0d47a1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .test-container {
+    margin: 20px;
+    padding: 25px;
+  }
+
+  .test-header h1 {
+    font-size: 24px;
+  }
+}

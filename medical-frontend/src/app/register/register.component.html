@@ -1,0 +1,80 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+  
+  <div class="signup-page">
+    <div class="signup-container">
+      <h1>Sign Up</h1>
+      <form #myForm="ngForm" (ngSubmit)="a()" novalidate>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="data.fname" placeholder="First Name" required #fname="ngModel">
+            <div *ngIf="fname.invalid && fname.touched" class="text-danger">
+              First name is required.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="middleName" [(ngModel)]="data.mname" placeholder="Middle Name">
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="data.lname" placeholder="Last Name" required #lname="ngModel">
+            <div *ngIf="lname.invalid && lname.touched" class="text-danger">
+              Last name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <select class="form-control select" name="gender" [(ngModel)]="data.gender" style="padding:5px;" required #gender="ngModel">
+              <option value="" disabled selected>Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <div *ngIf="gender.invalid && gender.touched" class="text-danger">
+              Gender is required.
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="date" class="form-control" name="dob" [(ngModel)]="data.dob" required #dob="ngModel">
+            <div *ngIf="dob.invalid && dob.touched" class="text-danger">
+              Date of birth is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="email" class="form-control" name="email" [(ngModel)]="data.email" placeholder="Email" required #email="ngModel">
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
+              Email is required.
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="tel" class="form-control" name="mobile" [(ngModel)]="data.mobile" placeholder="Mobile Number" required #mobile="ngModel">
+            <div *ngIf="mobile.invalid && mobile.touched" class="text-danger">
+              Mobile number is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name="username" [(ngModel)]="data.username" placeholder="Username" required #username="ngModel">
+            <div *ngIf="username.invalid && username.touched" class="text-danger">
+              Username is required.
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="password" class="form-control" name="password" [(ngModel)]="data.password" placeholder="Password" required #password="ngModel">
+            <div *ngIf="password.invalid && password.touched" class="text-danger">
+              Password is required.
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-signup" [disabled]="myForm.invalid">Sign Up</button>
+      </form>
+      <div class="footer">
+        Already have an account? <a (click)="log()">Log In</a>
+      </div>
+    </div>
+  </div>
+  

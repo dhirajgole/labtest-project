@@ -1,0 +1,205 @@
+h3 {
+  margin: 10px;
+  margin-left: 20px;
+  color: orange;
+  text-align: center;
+}
+
+.container {
+  padding: 10px;
+}
+
+.search-section {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.input-group {
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-input {
+  font-size: 1rem;
+  border-radius: 10px !important;
+  border: none;
+}
+
+.search-input:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.input-group-append .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 1050;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f8f9fa;
+}
+
+.suggestion-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.suggestion-info .suggestion-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #212529;
+}
+
+.suggestion-info .suggestion-category {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.search-count {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: contain;
+}
+
+.medicine-card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.medicine-card:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.medicine-category {
+  font-size: 0.9rem;
+  color: #007bff;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.manufacturer {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  color: #28a745;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.prescription {
+  color: #dc3545;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-top: 10px;
+  white-space: nowrap;
+}
+
+.no-results {
+  background: transparent;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+#idcursor:hover {
+  cursor: pointer;
+}
+
+.view-cart-btn {
+  font-size: 0.9rem;
+  border: 2px solid #007bff;
+}
+
+#addandcart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+#addandcart .btn {
+  flex: 1;
+}
+
+@media (max-width: 1400px) {
+  #addandcart {
+    flex-direction: column !important;
+    gap: 8px;
+  }
+
+  #addandcart .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #addandcart {
+    gap: 6px;
+  }
+
+  .card-price {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+}

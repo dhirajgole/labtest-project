@@ -1,0 +1,36 @@
+<h3 class="mt-4">Popular Health Checkup Packages</h3>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let test of labTests">
+      <div class="card h-100">
+        <img src="{{ test.img }}" class="card-img-top" alt="{{ test.name }}" 
+             id="idcursor" (click)="view(test)">
+        <div class="card-body">
+          <h5 id="idcursor" class="card-title" (click)="view(test)">{{ test.name }}</h5>
+          <p class="card-text">{{ test.description }}</p>
+          <h6 class="card-price">₹{{ test.price }}</h6>
+
+          <div id="addandcart">
+          <!-- Button changes with animation -->
+          <button class="btn w-100 btn-primary add-to-cart-btn" 
+                  (click)="addToCart(test)">
+            <span *ngIf="!isInCart(test)">Add to Cart</span>
+            <span *ngIf="isInCart(test)" class="added-success">
+              ✓ Added to Cart!
+            </span>
+          </button>
+          
+          <!-- View Cart button (shows when cart has items) -->
+          <button *ngIf="cartService.totalItems() > 0" 
+                  class="btn btn-outline-primary w-30 view-cart-btn"
+                  (click)="viewCart()">
+            View Cart ({{ cartService.totalItems() }})
+          </button>
+          </div>
+
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

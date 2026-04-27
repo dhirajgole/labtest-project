@@ -1,0 +1,97 @@
+<h3 class="mt-4 mb-4">
+  Pharmacy
+  <span *ngIf="searchText" class="search-count">
+    ({{ filteredMedicines.length }}{{ filteredMedicines.length === 1 ? ' result' : ' results' }})
+  </span>
+</h3>
+
+<div class="search-section">
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control search-input"
+      placeholder="Search medicines by name, category, or manufacturer..."
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()"
+      autocomplete="off"
+    />
+    <div class="input-group-append">
+      <button class="btn" (click)="searchText = ''; onSearchChange()" type="button">
+        <i class="s fa fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="suggestions-dropdown" *ngIf="suggestions.length > 0">
+    <div class="suggestion-item" *ngFor="let item of suggestions" (click)="selectSuggestion(item)">
+      <img [src]="item.img" [alt]="item.name" class="suggestion-img" />
+      <div class="suggestion-info">
+        <div class="suggestion-name">{{ item.name }}</div>
+        <div class="suggestion-category">{{ item.category }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let medicine of filteredMedicines">
+      <div class="card h-100 medicine-card">
+        <img
+          [src]="medicine.img"
+          class="card-img-top"
+          [alt]="medicine.name"
+          id="idcursor"
+          (click)="view(medicine)"
+        />
+
+        <div class="card-body d-flex flex-column">
+          <p class="medicine-category">{{ medicine.category }}</p>
+
+          <h5 class="card-title" id="idcursor" (click)="view(medicine)">
+            {{ medicine.name }}
+          </h5>
+
+          <p class="card-text">{{ medicine.description }}</p>
+          <p class="manufacturer">By {{ medicine.manufacturer }}</p>
+
+          <div class="mt-auto">
+            <h6 class="card-price">₹{{ medicine.price }}</h6>
+
+            <p class="prescription" *ngIf="medicine.requiresPrescription">
+              Prescription Required
+            </p>
+
+            <div id="addandcart">
+              <button class="btn btn-primary w-30 add-to-cart-btn" (click)="addToCart(medicine)">
+                <span *ngIf="!isInCart(medicine)">Add to Cart</span>
+                <span *ngIf="isInCart(medicine)" class="added-success">
+                  ✓ Added to Cart!
+                </span>
+              </button>
+
+              <button
+                *ngIf="cartService.totalItems() > 0"
+                class="btn btn-outline-primary w-30 view-cart-btn"
+                (click)="viewCart()"
+              >
+                View Cart ({{ cartService.totalItems() }})
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="filteredMedicines.length === 0 && searchText">
+      <div class="no-results text-center py-5">
+        <i class="fa fa-search fa-3x text-muted mb-4"></i>
+        <h4>No medicines found</h4>
+        <p class="text-muted">Try adjusting your search terms</p>
+        <button class="btn btn-outline-primary" (click)="searchText = ''; onSearchChange()">
+          Clear Search
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

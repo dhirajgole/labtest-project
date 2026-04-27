@@ -1,0 +1,62 @@
+<div class="cart-page">
+  <h2 class="cart-title">My Cart</h2>
+
+  <div *ngIf="cartService.cartItems().length === 0" class="empty-cart">
+    <i class="fa fa-shopping-cart empty-icon"></i>
+    <p>Your cart is empty!</p>
+  </div>
+
+  <div *ngIf="cartService.cartItems().length > 0" class="cart-layout">
+    <div class="cart-items">
+      <div class="cart-card" *ngFor="let item of cartService.cartItems()">
+        <img [src]="item.img" [alt]="item.name" class="cart-img" />
+
+        <div class="cart-details">
+          <h4>{{ item.name }}</h4>
+          <p class="cart-type">{{ item.type }}</p>
+          <p class="cart-price">₹{{ item.price }}</p>
+
+          <div class="qty-box">
+            <button class="qty-btn" (click)="decreaseQuantity(item)">-</button>
+            <span class="qty">{{ item.quantity }}</span>
+            <button class="qty-btn" (click)="increaseQuantity(item)">+</button>
+          </div>
+        </div>
+
+        <div class="cart-actions">
+          <h5>₹{{ item.price * item.quantity }}</h5>
+          <button class="remove-btn" (click)="removeItem(item.id)">
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <h3>Price Details</h3>
+
+      <div class="summary-row">
+        <span>Total Items</span>
+        <span>{{ cartService.totalItems() }}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Total Price</span>
+        <span>₹{{ cartService.totalPrice() }}</span>
+      </div>
+
+      <div class="summary-row final-total">
+        <span>Amount to Pay</span>
+        <span>₹{{ cartService.totalPrice() }}</span>
+      </div>
+
+      <button
+        class="checkout-btn"
+        (click)="checkout()"
+        [disabled]="isProcessing"
+      >
+        {{ isProcessing ? 'Processing...' : 'Proceed to Checkout' }}
+      </button>
+    </div>
+  </div>
+</div>

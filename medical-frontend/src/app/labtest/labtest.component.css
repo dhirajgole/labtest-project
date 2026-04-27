@@ -1,0 +1,78 @@
+h3 {
+  margin: 10px;
+  margin-left: 20px;
+  color: orange;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-price {
+  color: #28a745;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: 10px;
+  white-space: nowrap;
+  margin: 3px;
+}
+
+#idcursor:hover {
+  cursor: pointer;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.view-cart-btn {
+  font-size: 0.9rem;
+  border: 2px solid #007bff;
+}
+
+#addandcart{
+  display : flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* RESPONSIVE: Stack buttons vertically below 1400px */
+@media (max-width: 1400px) {
+  #addandcart {
+    flex-direction: column !important;
+    gap: 8px;
+  }
+  
+  #addandcart .btn {
+    width: 100%;
+  }
+}
+
+/* EXTRA RESPONSIVE: Mobile optimization */
+@media (max-width: 768px) {
+  #addandcart {
+    gap: 6px;
+  }
+  
+  .card-price {
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+}

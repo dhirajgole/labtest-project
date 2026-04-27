@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <img src="medicallogo.png" alt="logo">
+    <a class="navbar-brand" href="#">MediCare Hub</a>
+
+    <div id="navbarNav">
+      <ul class="navbar-nav flex-row ms-auto">
+        <li class="nav-item">
+          <div class="cart-box" (click)="cart()">
+            <i class="fa-solid fa-cart-shopping cart-icon"></i>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+              {{ cartService.totalItems() }}
+            </span>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="user()">
+            <img src="user.png" alt="user">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

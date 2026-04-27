@@ -1,0 +1,32 @@
+<div class="body">
+  <div class="container">
+    <h1>Login</h1>
+    <form #myForm="ngForm" (ngSubmit)="s()" novalidate>
+      <input
+        type="text"
+        name="identifier"
+        placeholder="Username or Email"
+        required
+        [(ngModel)]="identifier"
+        #identifierModel="ngModel"
+      />
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+        [(ngModel)]="password"
+        #passwordModel="ngModel"
+      />
+
+      <button type="submit" class="btn btn-login" [disabled]="myForm.invalid">Log In</button>
+    </form>
+
+    <div class="footer">
+      Don't have an account? <a (click)="sign()" id="anchor">Sign Up</a>
+      <br />
+      <a (click)="forgot()">Forgot Password ?</a>
+    </div>
+  </div>
+</div>

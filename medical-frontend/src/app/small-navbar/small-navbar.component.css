@@ -1,0 +1,38 @@
+*{
+  color: white;
+}
+
+.small-navbar {
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    background-color: white;
+  }
+  
+.small-navbar .nav-link {
+  font-size: 1.1rem;
+  color: #2E6171;
+  text-align: center;
+}
+
+.small-navbar .nav-link:hover {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  border-top : 2px solid black;
+  border-bottom : 2px solid black;
+}
+
+#id1{
+padding : 2px;
+padding-top: 0;
+}
+
+a:hover{
+cursor : pointer;
+}
