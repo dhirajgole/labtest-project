@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Angular
+.angular/
+.tmp/
+
+# IDE files
+.vscode/
+.idea/
+
+# Database
+*.sql
+
+# Coverage
+coverage/

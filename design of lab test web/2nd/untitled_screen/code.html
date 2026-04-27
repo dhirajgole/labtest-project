@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Lab Test Appointment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#16A34A", // Green for health and trust
+                        "primary-light": "#D1FAE5",
+                        accent: "#F97316", // Orange for call to action
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#111827",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "rgb(31 41 55 / 1)",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F3F4F6",
+                        "subtext-light": "#6B7280",
+                        "subtext-dark": "#9CA3AF",
+                        "border-light": "#E5E7EB",
+                        "border-dark": "#374151"
+                    },
+                    fontFamily: {
+                        sans: ["Poppins", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'input': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'input-focus': '0 0 0 2px #16A34A',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .step-active {
+            background-color: #16A34A;
+            color: white;
+        }
+        .step-inactive {
+            background-color: #E5E7EB;
+            color: #6B7280;
+        }
+        .dark .step-inactive {
+            background-color: #374151;
+            color: #9CA3AF;
+        }
+        .progress-bar-active {
+            background-color: #16A34A;
+        }
+        .progress-bar-inactive {
+            background-color: #E5E7EB;
+        }
+        .dark .progress-bar-inactive {
+            background-color: #374151;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="min-h-screen flex items-center justify-center p-4">
+<div class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<div class="hidden lg:block sticky top-20">
+<img alt="A serene and modern laboratory environment" class="w-full h-auto rounded-xl shadow-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxCYE0bi51AV0oj3ZkYqaJd_4Mo6O65tn6dUxRgQlpGDO1I3k3xtINXRxnYdKOQl0FycWLJ2Zr_RiXRR3eeNPgkwZkEIqI1K7hEaDp3dkuoYbvs-P8d8vuJzSkCBQmrZaKPHA3TquEIDO7DWl4ZEqDntwzbId3UTA79F8F37FPFe54y-m0Csgp2b46Oyh8qE6UPvSPtKt0UwyaqFb4_C7prbA01m3vKvP8U7cANo8v3TSu9BXgA8Rkmjbo-z2DpweVtDtV5eNYbe0"/>
+<div class="mt-8 bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-md">
+<h2 class="text-xl font-bold text-text-light dark:text-text-dark mb-4">Your Appointment Summary</h2>
+<div class="space-y-3" id="summary-list">
+<div class="flex justify-between items-center text-subtext-light dark:text-subtext-dark">
+<span>No tests selected yet</span>
+</div>
+</div>
+<div class="border-t border-border-light dark:border-border-dark my-4"></div>
+<div class="flex justify-between items-center text-lg font-bold">
+<span class="text-text-light dark:text-text-dark">Total</span>
+<span class="text-primary" id="summary-total">₹0</span>
+</div>
+</div>
+<div class="mt-8 text-center text-subtext-light dark:text-subtext-dark">
+<p class="flex items-center justify-center gap-2"><span class="material-symbols-outlined text-primary">verified_user</span> NABL Accredited Labs</p>
+<p class="flex items-center justify-center gap-2 mt-2"><span class="material-symbols-outlined text-primary">encrypted</span> 100% Secure &amp; Confidential</p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 sm:p-8 rounded-xl shadow-2xl">
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-text-light dark:text-text-dark">Book a Lab Test</h1>
+<p class="text-subtext-light dark:text-subtext-dark mt-2">Fast, Reliable, and at Your Convenience.</p>
+</div>
+<div class="flex items-center mb-10">
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold step-active" id="progress-step-1">1</div>
+<p class="text-xs mt-2 font-medium text-primary">Details</p>
+</div>
+<div class="flex-1 h-1 mx-2 progress-bar-inactive" id="progress-bar-1"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold step-inactive" id="progress-step-2">2</div>
+<p class="text-xs mt-2 font-medium text-subtext-light dark:text-subtext-dark">Schedule</p>
+</div>
+<div class="flex-1 h-1 mx-2 progress-bar-inactive" id="progress-bar-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold step-inactive" id="progress-step-3">3</div>
+<p class="text-xs mt-2 font-medium text-subtext-light dark:text-subtext-dark">Payment</p>
+</div>
+</div>
+<form class="space-y-6">
+<div id="step-1">
+<h2 class="text-xl font-semibold mb-4">Patient &amp; Test Information</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-subtext-light dark:text-subtext-dark mb-1" for="patientName">Patient Name</label>
+<input class="w-full px-4 py-2 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark rounded-md focus:ring-2 focus:ring-primary focus:border-primary shadow-input" id="patientName" placeholder="e.g., John Doe" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-subtext-light dark:text-subtext-dark mb-1" for="contactNumber">Contact Number</label>
+<input class="w-full px-4 py-2 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark rounded-md focus:ring-2 focus:ring-primary focus:border-primary shadow-input" id="contactNumber" placeholder="e.g., 9876543210" type="tel"/>
+</div>
+</div>
+<div class="mt-6">
+<label class="block text-sm font-medium text-subtext-light dark:text-subtext-dark mb-2">Select Tests</label>
+<div class="relative">
+<button class="w-full flex justify-between items-center text-left px-4 py-2 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark rounded-md focus:ring-2 focus:ring-primary focus:border-primary shadow-input" type="button">
+<span class="text-subtext-light dark:text-subtext-dark">Click to add a test</span>
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark">add</span>
+</button>
+</div>
+</div>
+<div class="mt-4 space-y-3" id="selected-tests-list">
+<div class="flex items-center justify-between bg-primary-light dark:bg-gray-800 p-3 rounded-lg">
+<span class="font-medium text-primary dark:text-primary-light">Complete Blood Count (CBC)</span>
+<div class="flex items-center gap-4">
+<span class="font-semibold text-primary dark:text-primary-light">₹400</span>
+<button class="material-symbols-outlined text-red-500 hover:text-red-700 text-xl">delete</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-primary-light dark:bg-gray-800 p-3 rounded-lg">
+<span class="font-medium text-primary dark:text-primary-light">Lipid Profile</span>
+<div class="flex items-center gap-4">
+<span class="font-semibold text-primary dark:text-primary-light">₹800</span>
+<button class="material-symbols-outlined text-red-500 hover:text-red-700 text-xl">delete</button>
+</div>
+</div>
+</div>
+<div class="flex justify-end mt-8">
+<button class="bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-background-light dark:focus:ring-offset-card-dark transition-all duration-300 ease-in-out flex items-center gap-2 shadow-lg" type="button">
+                                Choose Date &amp; Time
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="hidden" id="step-2">
+<h2 class="text-xl font-semibold mb-4">Choose Appointment Slot</h2>
+<div class="mb-6">
+<label class="block text-sm font-medium text-subtext-light dark:text-subtext-dark mb-2">Select Date</label>
+<div class="p-4 bg-background-light dark:bg-background-dark rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-center mb-4">
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" type="button"><span class="material-symbols-outlined">chevron_left</span></button>
+<h3 class="font-semibold text-lg">October 2023</h3>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" type="button"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-sm">
+<div class="font-medium text-subtext-light dark:text-subtext-dark">Su</div>
+<div class="font-medium text-subtext-light dark:text-subtext-dark">Mo</div>
+<div class="font-medium text-subtext-light dark:text-subtext-dark">Tu</div>
+<div class="font-medium text-subtext-light dark:text-subtext-dark">We</div>
+<div class="font-medium text-subtext-light dark:text-subtext-dark">Th</div>
+<div class="font-medium text-subtext-light dark:text-subtext-dark">Fr</div>
+<div class="font-medium text-subtext-light dark:text-subtext-dark">Sa</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">24</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">25</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">26</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">27</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">28</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">29</div>
+<div class="p-2 text-gray-400 dark:text-gray-600">30</div>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">1</button>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">2</button>
+<button class="p-2 rounded-full bg-primary text-white font-semibold">3</button>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">4</button>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-subtext-light dark:text-subtext-dark mb-2">Select a Time Slot</label>
+<div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+<button class="py-3 px-3 border border-border-light dark:border-border-dark rounded-lg text-center hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all" type="button">09:00 AM</button>
+<button class="py-3 px-3 border border-primary bg-primary-light text-primary font-semibold rounded-lg ring-2 ring-primary" type="button">10:00 AM</button>
+<button class="py-3 px-3 border border-border-light dark:border-border-dark rounded-lg text-center hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all" type="button">11:00 AM</button>
+<button class="py-3 px-3 border border-border-light dark:border-border-dark rounded-lg text-gray-400 dark:text-gray-600 cursor-not-allowed" type="button">11:30 AM</button>
+</div>
+</div>
+<div class="flex justify-between mt-8">
+<button class="bg-gray-200 dark:bg-gray-700 text-subtext-light dark:text-subtext-dark font-semibold py-3 px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 ease-in-out flex items-center gap-2" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+                                Back
+                            </button>
+<button class="bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-background-light dark:focus:ring-offset-card-dark transition-all duration-300 ease-in-out flex items-center gap-2 shadow-lg" type="button">
+                                Proceed to Payment
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="hidden" id="step-3">
+<h2 class="text-xl font-semibold mb-2">Confirm and Pay</h2>
+<p class="text-subtext-light dark:text-subtext-dark mb-6">Choose your preferred payment method.</p>
+<div class="space-y-4">
+<label class="flex items-center p-4 border-2 border-primary rounded-lg cursor-pointer bg-primary-light dark:bg-opacity-20 has-[:checked]:ring-2 has-[:checked]:ring-primary has-[:checked]:border-primary transition-all" for="pay-now">
+<input checked="" class="h-5 w-5 text-primary focus:ring-primary border-primary" id="pay-now" name="payment" type="radio"/>
+<div class="ml-4">
+<h3 class="font-semibold text-lg text-primary">Pay Now</h3>
+<p class="text-subtext-light dark:text-subtext-dark">Complete your payment online securely.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-primary text-3xl">credit_card</span>
+</label>
+<label class="flex items-center p-4 border-2 border-border-light dark:border-border-dark rounded-lg cursor-pointer hover:border-primary has-[:checked]:ring-2 has-[:checked]:ring-primary has-[:checked]:border-primary transition-all" for="pay-at-lab">
+<input class="h-5 w-5 text-primary focus:ring-primary" id="pay-at-lab" name="payment" type="radio"/>
+<div class="ml-4">
+<h3 class="font-semibold text-lg">Pay at Lab</h3>
+<p class="text-subtext-light dark:text-subtext-dark">Pay directly at the lab during your visit.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-subtext-light dark:text-subtext-dark text-3xl">storefront</span>
+</label>
+</div>
+<div class="flex justify-between items-center mt-8">
+<button class="bg-gray-200 dark:bg-gray-700 text-subtext-light dark:text-subtext-dark font-semibold py-3 px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 ease-in-out flex items-center gap-2" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+                                Back
+                            </button>
+<button class="bg-accent text-white font-bold py-3 px-8 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-background-light dark:focus:ring-offset-card-dark transition-all duration-300 ease-in-out flex items-center gap-2 shadow-lg" type="submit">
+                                Confirm Appointment
+                                <span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50" id="qr-modal">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-2xl p-8 max-w-sm w-full text-center relative">
+<button class="absolute top-4 right-4 text-subtext-light dark:text-subtext-dark hover:text-text-light dark:hover:text-text-dark" id="close-modal">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<h2 class="text-2xl font-bold mb-2">Scan to Pay</h2>
+<p class="text-subtext-light dark:text-subtext-dark mb-4">Use any UPI app to scan and pay.</p>
+<img alt="QR Code for payment" class="mx-auto rounded-lg border-4 border-primary p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYOeN_vfMI-905nN3A4uWiNz2R55p05J9fzbC76-21O3MUQw1ez0n1SLM9lMlNMa9YfCGLBb85SfATVWCnU_tiSjTxPWz930oMADOutiQIRowVBObXiwL_xMcX1ZSFzH7DL7FBYVqCH4dMZtBe7hbaRf-VHDQZK8DeeQyB1hctpZdshqvJEiIzxjUzfK1l48-03cE0Xg0cs3taf-6nMB8EzYldZ6DuOFWl5z_1UFcDW8J4kHS1gvNXHVHZY3Q7CeSbncIhgAw-MjU"/>
+<div class="mt-6">
+<p class="text-lg">Total Amount: <span class="font-bold text-primary">₹1200.00</span></p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-2 animate-pulse">Waiting for payment confirmation...</p>
+</div>
+</div>
+</div>
+
+</body></html>

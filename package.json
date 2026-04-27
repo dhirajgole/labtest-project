@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/cli": "^18.2.7",
+    "razorpay": "^2.9.6"
+  }
+}
