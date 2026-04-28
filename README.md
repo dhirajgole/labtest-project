@@ -1,4 +1,4 @@
-to execute this website - 
+To execute this website - 
 
 step1 - install code in local system / laptop
 step2 - install npm in medical-frontend and medical-backend
