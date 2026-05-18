@@ -65,7 +65,7 @@ export class LabtestComponent implements OnInit {
       },
       error: (err) => {
         console.error('Add lab test to cart failed:', err);
-        alert(err.error?.message || 'Failed to add item to cart');
+        alert(`${err.error?.message} , please log-in and if already logged in then log-in again` || 'Failed to add item to cart');
       }
     });
   }

@@ -1,0 +1,77 @@
+<!-- Floating AI Button -->
+<button
+  class="chatbot-btn"
+  *ngIf="!isChatOpen"
+  (click)="toggleChatbot()"
+>
+  <i class="fa fa-robot"></i>
+</button>
+
+<!-- Chat Sidebar -->
+<div class="chat-sidebar" [class.open]="isChatOpen">
+
+  <!-- Header -->
+  <div class="chat-header">
+
+    <h2>MediCare AI</h2>
+
+    <button class="close-btn" (click)="toggleChatbot()">
+      ✕
+    </button>
+
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-messages" #chatContainer>
+
+    <div
+      *ngFor="let msg of messages"
+      class="message-wrapper"
+      [ngClass]="msg.sender === 'user' ? 'user-wrapper' : 'bot-wrapper'"
+    >
+
+      <div
+        [ngClass]="msg.sender === 'user' ? 'user-msg' : 'bot-msg'"
+      >
+
+        {{ msg.text }}
+
+      </div>
+
+    </div>
+
+    <!-- Typing Indicator -->
+    <div
+      *ngIf="isTyping"
+      class="message-wrapper bot-wrapper"
+    >
+
+      <div class="bot-msg typing">
+
+        MediCare AI is typing...
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Input -->
+  <div class="chat-input">
+
+    <input
+      type="text"
+      [(ngModel)]="userMessage"
+      placeholder="Ask about medicines, orders..."
+      (keyup.enter)="sendMessage()"
+    />
+
+    <button (click)="sendMessage()">
+
+      Send
+
+    </button>
+
+  </div>
+
+</div>

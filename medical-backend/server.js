@@ -9,6 +9,7 @@ const routes = require('./routes/routes');
 const authRoutes = require('./routes/auth.routes');
 const paymentRoutes = require('./routes/payment.routes');
 const cartRoutes = require('./routes/cart.routes');
+const chatbotRoutes = require("./routes/chatbot.routes");
 
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:4200',
@@ -21,6 +22,7 @@ app.use('/api', routes);
 app.use('/api/auth', authRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/cart', cartRoutes);
+app.use("/chatbot", chatbotRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is running');

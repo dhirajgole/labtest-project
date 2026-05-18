@@ -1,19 +1,23 @@
-# Node modules
+# Dependencies
 node_modules/
 
-# Environment variables
+# Environment Variables
 .env
+.env.local
+.env.production
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# OS files
+# OS Files
 .DS_Store
 Thumbs.db
 
-# Build output
+# Build Output
 dist/
 build/
 
@@ -21,12 +25,26 @@ build/
 .angular/
 .tmp/
 
-# IDE files
+# IDE Files
 .vscode/
 .idea/
 
-# Database
-*.sql
-
 # Coverage
 coverage/
+
+# Cache
+.cache/
+
+# Database Dumps
+*.sql
+
+# Python (for RAG/AI)
+__pycache__/
+*.pyc
+venv/
+.env/
+
+# AI Models / Vector DB
+models/
+chroma_db/
+faiss_index/

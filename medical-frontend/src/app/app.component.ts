@@ -7,11 +7,12 @@ import { FooterComponent } from './footer/footer.component';
 import { LabtestComponent } from './labtest/labtest.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, SmallNavbarComponent, MainpageComponent, FooterComponent, LabtestComponent, CommonModule],
+  imports: [ChatbotComponent, RouterOutlet, NavbarComponent, SmallNavbarComponent, MainpageComponent, FooterComponent, LabtestComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
