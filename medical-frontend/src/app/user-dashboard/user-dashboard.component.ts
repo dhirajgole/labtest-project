@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent implements OnInit {
+
   user: any = {};
   isBrowser = false;
 
@@ -20,44 +21,24 @@ export class UserDashboardComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.isBrowser) {
       const currentUser = localStorage.getItem('currentUser');
+
       if (currentUser) {
         this.user = JSON.parse(currentUser);
+        console.log(this.user); // Check available fields
       }
     }
   }
 
-  logout() {
+  logout(): void {
     if (this.isBrowser) {
       localStorage.removeItem('currentUser');
       localStorage.removeItem('reglog');
     }
+
     this.router.navigate(['/login']);
   }
 
-  orders = [
-    {
-      orderId: 'ORD1024',
-      date: '2026-04-01',
-      total: 540,
-      paymentStatus: 'Paid',
-      deliveryStatus: 'Delivered',
-      items: [
-        { name: 'Paracetamol 650', quantity: 2, price: 120 },
-        { name: 'Vitamin C Tablets', quantity: 1, price: 300 }
-      ]
-    }
-  ];
-
-  labBookings = [
-    {
-      testName: 'Complete Blood Count (CBC)',
-      bookingDate: '2026-04-09',
-      slot: '8:00 AM - 9:00 AM',
-      collectionStatus: 'Scheduled',
-      reportStatus: 'Pending'
-    }
-  ];
 }
